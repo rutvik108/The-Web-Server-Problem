@@ -1,0 +1,53 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class TheWebServerProblem {
+    public static void main(String []args){
+
+        //use list data structure to store the value
+        //in use to store a,b,c input for each website
+        List<Integer> in;
+        //store whole bunch of data of in
+        List<List<Integer>> out=new ArrayList<>();
+
+        //take input as number of websites
+        Scanner sc=new Scanner(System.in);
+        int t =sc.nextInt();
+        //take a,b,c data as a input for t files
+        for(int i=0; i<t; i++){
+            in= new ArrayList<>();
+            for(int j=0; j<3; j++){
+                in.add(sc.nextInt());
+            }
+            out.add(in);
+        }
+        //sort the list of list
+        //create to sort the copy
+
+            out.sort((a,b)-> {
+                 if(a.get(0).equals(b.get(0))){
+                     if(a.get(1).equals(b.get(1))){
+                         return a.get(2).compareTo(b.get(2));
+                     }
+                     else {
+                         return b.get(1).compareTo(a.get(1));
+                     }
+                 }
+                 return a.get(0).compareTo(b.get(0));
+            });
+
+
+        //print the output on the screen
+        for(int i=0; i<t; i++){
+            List<Integer> val=out.get(i);
+            for(int j=0; j<3; j++){
+                int ch=val.get(j);
+                System.out.print(ch+" ");
+            }
+            System.out.println();
+
+        }
+
+    }
+}
